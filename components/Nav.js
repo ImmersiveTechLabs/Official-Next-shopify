@@ -2,12 +2,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 import { CartContext } from '../context/shopContext'
 import MiniCart from './MiniCart'
-
-const navigation = [
-  { name: 'About', href: '/about' },
-  { name: 'Shop', href: '/products' },
-  { name: 'Contact', href: '/contact' }
-]
+import navigation from '../Data/header.js'
 
 export default function Nav() {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext)
@@ -16,27 +11,41 @@ export default function Nav() {
   cart.map(item => {
     return (cartQuantity += item?.variantQuantity)
   })
-
   const menuToggle = () => {
     const toggleMenu = document.querySelector('#toggle')
     toggleMenu.classList.toggle('top-[-700px]')
     toggleMenu.classList.toggle('top-[70px]')
   }
 
+  const stylemobile = {
+    backgroundColor: navigation.mobileBK,
+  }
+  const styleheader = {
+    backgroundColor: navigation.headerBK,
+  }
+  const styletoggleButton = {
+    color: navigation.toggleButton,
+  }
+
   return (
-    <header className="border-b sticky top-0 z-20 bg-white">
+    <header className="border-b sticky top-0 z-20 bg-white" style={styleheader}>
       <div className="flex items-center justify-between max-w-6xl pt-4 pb-2 px-4 mx-auto lg:max-w-screen-xl">
         <Link href="/" passHref>
           <a className="cursor-pointer">
             <span className="text-lg pt-1 font-bold">
-              Shopify + Next.js
+              {navigation.logo.img ? ( 
+                 <img src={navigation.logo.img} alt={navigation.logo.alt} className="h-8 w-8" />
+              ) : (
+                navigation.logo.alt
+              )
+              }
             </span>
           </a>
         </Link>
 
         <nav className="hidden lg:flex space-x-10">
           
-           {navigation.map((item, i) => (
+           {navigation.navigation.map((item, i) => (
                <Link href={item.href} key={i}>
                <a className="text-md font-bold cursor-pointer">{item.name}</a>
              </Link>
@@ -46,7 +55,8 @@ export default function Nav() {
 
         <nav className="flex lg:hidden">
           <button
-            className="p-2 rounded-md text-gray-400"
+            className="p-2 rounded-md "
+            style={styletoggleButton}
             aria-label="Toggle menu"
             onClick={menuToggle}
           >
@@ -68,9 +78,9 @@ export default function Nav() {
         </nav>
 
 
-        <div id="toggle" className=" absolute z-[-999] top-[-700px] transition-all left-0 w-[100%] p-[1rem] bg-[gray]">
+        <div id="toggle" className= "absolute z-[-999] lg:top-[-700px] top-[-700px] transition-all left-0 w-[100%] p-[1rem]" style={stylemobile}>
           <div className="pt-2 pb-3 space-y-1 flex flex-col  " >
-               {navigation.map((item, i) => (
+               {navigation.navigation.map((item, i) => (
                <Link href={item.href}>
                <a className="text-md font-bold cursor-pointer">{item.name}</a>
              </Link>

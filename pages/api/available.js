@@ -6,6 +6,21 @@ export default async function send(req, res) {
   const domain = process.env.SHOPIFY_STORE_DOMAIN
   const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN
 
+
+ 
+
+ console.log("Domain ERT: ", domain)
+ console.log("Token: ", storefrontAccessToken)
+
+
+
+
+
+
+
+
+
+
   async function ShopifyData(query) {
     const URL = `https://${domain}/api/2022-10/graphql.json`
 
@@ -22,11 +37,13 @@ export default async function send(req, res) {
 
     try {
       const data = await fetch(URL, options).then(response => {
+        console.log("Response: ", response)
         return response.json()
       })
 
       return data
     } catch (error) {
+      console.log("Error: ", error)
       throw new Error("Products not fetched")
     }
   }
@@ -49,8 +66,8 @@ export default async function send(req, res) {
 
     const response = await ShopifyData(query)
 
-    const product = response.data.product ? response.data.product : []
-
+    const product = response.data?.product ? response.data.product : []
+    console.log("Product: ", product)
     return product
   }
 

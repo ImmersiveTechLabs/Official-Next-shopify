@@ -9,7 +9,7 @@ export default function Home({ products }) {
   return (
     <div className="">
       <Head>
-        <title>Modern eCommerce Course</title>
+        <title>Ad Next + Shopify </title>
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta httpEquiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <meta name="description" content="Modern eCommerce Development Course focusing on Shopify, Next.js, TailwindCSS, GraphQL. Additional topics include Storefront API, Static Site Generation, getStaticPaths, getStaticProps and more." />

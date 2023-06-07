@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard"
+import ProductCard from "../components/ProductCard"
 import { useState, useEffect } from "react"
 
 const ProductList = () => {
@@ -40,7 +40,7 @@ const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
         const fetchProducts = async () => {
             const query = `
             {
-                products(first: 4) {
+                products(first: 100) {
                   edges {
                     node {
                       id

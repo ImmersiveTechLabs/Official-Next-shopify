@@ -81,7 +81,7 @@ export default function Nav() {
         <div id="toggle" className= "absolute z-[-999] lg:top-[-700px] top-[-700px] transition-all left-0 w-[100%] p-[1rem]" style={stylemobile}>
           <div className="pt-2 pb-3 space-y-1 flex flex-col  " >
                {navigation.navigation.map((item, i) => (
-               <Link href={item.href}>
+               <Link href={item.href} key={i}>
                <a className="text-md font-bold cursor-pointer">{item.name}</a>
              </Link>
             ))    

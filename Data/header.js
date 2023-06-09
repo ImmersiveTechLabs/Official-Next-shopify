@@ -3,6 +3,7 @@ const header = {
         navigation: [
         { name: 'About', href: '/about' },
         { name: 'Shop', href: '/products' },
+        { name: 'Collections' , href: '/collections'},
         { name: 'Contact', href: '/contact' }
       ],
    mobileBK: "#cdcdcd",

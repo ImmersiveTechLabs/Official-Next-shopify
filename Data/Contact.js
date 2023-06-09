@@ -2,12 +2,12 @@
 const Data = {
     title: "Contact Us",
     description: "Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.",
-    inputs : [
+    inputs: [
         {
             id: "email",
             type: "email",
             label: "Your email",
-            placeholder: "",
+            placeholder: "your email",
             required: true,
         },
         {
@@ -24,7 +24,7 @@ const Data = {
             placeholder: "Leave a comment...",
             required: false,
         },
-       
+
     ]
 }
 

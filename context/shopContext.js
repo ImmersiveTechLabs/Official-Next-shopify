@@ -131,6 +131,9 @@ export default function ShopProvider({ children }) {
   }
 
 
+ 
+
+
   return (
     <CartContext.Provider value={{
       cart,

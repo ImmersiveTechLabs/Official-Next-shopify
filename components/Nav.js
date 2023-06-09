@@ -33,8 +33,8 @@ export default function Nav() {
         <Link href="/" passHref>
           <a className="cursor-pointer">
             <span className="text-lg pt-1 font-bold">
-              {navigation.logo.img ? ( 
-                 <img src={navigation.logo.img} alt={navigation.logo.alt} className="h-8 w-8" />
+              {navigation.logo.img ? (
+                <img src={navigation.logo.img} alt={navigation.logo.alt} className="h-8 w-8" />
               ) : (
                 navigation.logo.alt
               )
@@ -44,12 +44,12 @@ export default function Nav() {
         </Link>
 
         <nav className="hidden lg:flex space-x-10">
-          
-           {navigation.navigation.map((item, i) => (
-               <Link href={item.href} key={i}>
-               <a className="text-md font-bold cursor-pointer">{item.name}</a>
-             </Link>
-           ))}
+
+          {navigation.navigation.map((item, i) => (
+            <Link href={item.href} key={i}>
+              <a className="text-md font-bold cursor-pointer">{item.name}</a>
+            </Link>
+          ))}
 
         </nav>
 
@@ -78,20 +78,20 @@ export default function Nav() {
         </nav>
 
 
-        <div id="toggle" className= "absolute z-[-999] lg:top-[-700px] top-[-700px] transition-all left-0 w-[100%] p-[1rem]" style={stylemobile}>
+        <div id="toggle" className="absolute z-[-999] lg:top-[-700px] top-[-700px] transition-all left-0 w-[100%] p-[1rem]" style={stylemobile}>
           <div className="pt-2 pb-3 space-y-1 flex flex-col  " >
-               {navigation.navigation.map((item, i) => (
-               <Link href={item.href} key={i}>
-               <a className="text-md font-bold cursor-pointer">{item.name}</a>
-             </Link>
-            ))    
-              }
-            <a 
-          className="text-md font-bold cursor-pointer"
-          onClick={() => setCartOpen(!cartOpen)}
-          >
-          🛒 ({cartQuantity})
-        </a>
+            {navigation.navigation.map((item, i) => (
+              <Link href={item.href} key={i}>
+                <a className="text-md font-bold cursor-pointer">{item.name}</a>
+              </Link>
+            ))
+            }
+            <a
+              className="text-md font-bold cursor-pointer"
+              onClick={() => setCartOpen(!cartOpen)}
+            >
+              🛒 ({cartQuantity})
+            </a>
           </div>
         </div>
 
@@ -100,10 +100,10 @@ export default function Nav() {
 
 
 
-        <a 
+        <a
           className="hidden lg:flex text-md font-bold cursor-pointer"
           onClick={() => setCartOpen(!cartOpen)}
-          >
+        >
           🛒 ({cartQuantity})
         </a>
         <MiniCart cart={cart} />

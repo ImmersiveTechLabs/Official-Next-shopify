@@ -99,16 +99,16 @@ export default function MiniCart({ cart }) {
                                     <div className="flex items-end justify-between flex-1 text-sm">
                                       {/* <p className="text-gray-500">Qty {product.variantQuantity}</p> */}
                                       <div className={`border`}>
-                                        <button 
-                                          className="px-2" 
+                                        <button
+                                          className="px-2"
                                           onClick={() => decrementCartItem(product)}
                                           disabled={cartLoading}
                                         >
                                           -
                                         </button>
                                         <span className="px-2 border-l border-r">{product.variantQuantity}</span>
-                                        <button 
-                                          className="px-2" 
+                                        <button
+                                          className="px-2"
                                           onClick={() => incrementCartItem(product)}
                                           disabled={cartLoading}
                                         >

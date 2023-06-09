@@ -2,34 +2,34 @@ import ProductCard from "./ProductCard"
 import { useState, useEffect } from "react"
 
 const ProductList = () => {
-    const [products , setProducts] = useState([])
-    
-    useEffect(() => {
-      const domain = process.env.SHOPIFY_STORE_DOMAIN;
-const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
-        async function ShopifyData(query) {
-            const URL = `https://${domain}/api/2022-10/graphql.json`
-           const options = {
-                endpoint: URL,
-                method: "POST",
-                headers: {
-                    "X-Shopify-Storefront-Access-Token": storefrontAccessToken,
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ query })
-            }
-            try {
-                const data = await fetch(URL, options).then(response => {
-                    console.log("Response: ", response)
-                    return response.json()
-                })
-                return data
-            } catch (error) {
-                console.log("Error: ", error)
-                throw new Error("Products not fetched")
-            }
-        }
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const domain = process.env.SHOPIFY_STORE_DOMAIN;
+    const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
+    async function ShopifyData(query) {
+      const URL = `https://${domain}/api/2022-10/graphql.json`
+      const options = {
+        endpoint: URL,
+        method: "POST",
+        headers: {
+          "X-Shopify-Storefront-Access-Token": storefrontAccessToken,
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query })
+      }
+      try {
+        const data = await fetch(URL, options).then(response => {
+          console.log("Response: ", response)
+          return response.json()
+        })
+        return data
+      } catch (error) {
+        console.log("Error: ", error)
+        throw new Error("Products not fetched")
+      }
+    }
 
 
 
@@ -37,8 +37,8 @@ const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
 
 
 
-        const fetchProducts = async () => {
-            const query = `
+    const fetchProducts = async () => {
+      const query = `
             {
                 products(first: 4) {
                   edges {
@@ -47,7 +47,7 @@ const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
                       title
                       handle
                       description
-                      images(first: 5) {
+                      images(first: 10) {
                         edges {
                           node {
                             url
@@ -65,11 +65,11 @@ const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
                 }
               }
             `
-            const response = await ShopifyData(query)
-            setProducts(response.data?.products.edges  || [])
-        }
-        fetchProducts()
-    }, [])
+      const response = await ShopifyData(query)
+      setProducts(response.data?.products.edges || [])
+    }
+    fetchProducts()
+  }, [])
 
 
 

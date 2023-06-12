@@ -1,7 +1,6 @@
 import Link from 'next/dist/client/link'
 import React from 'react'
 import { useEffect , useState } from 'react'
-import NameCollection from '../components/collectionnameget'
 
 const Collection = ()=>{
     // get all the collectiosn using greaph ql api 
